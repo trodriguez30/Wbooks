@@ -1,0 +1,144 @@
+{
+  "sign_in": [
+    {
+      "first_name": "TATIANA",
+      "last_name": "RODR",
+      "email": "TAT@GNAI.CO",
+      "birthday": "12/20/2012",
+      "id": 1
+    },
+    {
+      "first_name": "Tatiana",
+      "last_name": "Rodríguez",
+      "email": "tatiana@gmail.com",
+      "gender": "Femenino",
+      "created_at": "2021-05-10T17:15:28.965Z",
+      "id": 2
+    },
+    {
+      "first_name": "Tatiana",
+      "last_name": "Rodriguez",
+      "email": "Tatiana@gmai.com",
+      "gender": "Femenino",
+      "created_at": "2021-05-10T17:32:24.313Z",
+      "id": 3
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "author": "Emmie Thiel",
+      "title": "Ring of Bright Water",
+      "genre": "Short story",
+      "publisher": "Butterworth-Heinemann",
+      "year": "1968",
+      "image_url": null,
+      "comments": [
+        {
+          "avatar": null,
+          "commenter": "Tatiana Rodríguez",
+          "comment": "Although this was written in the 60s, I just found it after reading a Wall Street Journal list of the best nature writing. This is a lovely read about a writer who lives in an isolated Scottish home in summer. This is not a book of fast plot or twists, but it is equisite description of the home and life there, and of how life changes when the writer acquires a pet otter. With sophisticated writing and vocabulary, even the fawning over this beloved otter avoids sentimentality or cuteness, and sustains a literary tone that is beautiful and rewarding.",
+          "date": "2011-12-21T10:52:41-05:00"
+        },
+        {
+          "avatar": "https://images.gr-assets.com/users/1495300382p2/311153.jpg",
+          "commenter": "Cammeron Scott",
+          "comment": "A wonderful book to read when you are neither here, nor there. Eye opening. Good to read before bed. Not much substance, except for the substance of place, which is vivid, and the relationship between an otter and a human.",
+          "date": "2018-12-20T10:52:41-05:00"
+        },
+        {
+          "avatar": "https://images.gr-assets.com/users/1483644855p2/49155927.jpg",
+          "commenter": "Jeffey E",
+          "comment": "Not what I initially expected (but in a good way). I was anticipating it to be about otters, otters, and more otters. Instead, this book is a beautiful collection of observations about nature, comical stories, and poetic prose.",
+          "date": "2018-12-20T10:52:41-05:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "author": "Christopher Pike",
+      "title": "Scavenger Hunt",
+      "genre": "other",
+      "publisher": "Pocket Books",
+      "year": "1989",
+      "image_url": null
+    },
+    {
+      "id": 3,
+      "author": "Lois Duncan",
+      "title": "Locked in time",
+      "genre": "suspense",
+      "publisher": "Little, Brown",
+      "year": "1985",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg"
+    },
+    {
+      "id": 4,
+      "author": "Christopher Pike",
+      "title": "Scavenger Hunt",
+      "genre": "suspense",
+      "publisher": "Pocket Books",
+      "year": "1989",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg"
+    },
+    {
+      "id": 5,
+      "author": "Christopher Pike",
+      "title": "Scavenger Hunt",
+      "genre": "suspense",
+      "publisher": "Pocket Books",
+      "year": "1989",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg"
+    },
+    {
+      "id": 6,
+      "author": "Paula Hawkins",
+      "title": "The Girl on the Train\n",
+      "genre": "suspense",
+      "publisher": "Riverhead Books",
+      "year": "2015",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/content.jpeg",
+      "comments": [
+        {
+          "avatar": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/users/1528390751i/4622890._UY100_CR1,0,100,100_.jpg",
+          "commenter": "Emily May",
+          "comment": "If I hated 'Gone Girl' am I going to hate 'The Girl on the Train¡? Obviously not looking for someone with a crystal ball, just informed (like you've read both books and 'they're not really that much alike')",
+          "date": "2016-08-31T10:52:41-05:00"
+        },
+        {
+          "avatar": null,
+          "commenter": "Cammeron Scott",
+          "comment": "I loathed Gone Girl and wished every one of the characters would die by the end. It was one of those books I felt kind of like showering after I finished reading it to get the yuck off me. However, I enjoyed The Girl on the Train. As someone else said, the characters (some, not all) are more sympathetic. It was fast-paced and had a decent ending.",
+          "date": "2018-01-30T10:52:41-05:00"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "author": "Anthony Doerr",
+      "title": "All the Light We Cannot See",
+      "genre": "suspense",
+      "publisher": "Scribner",
+      "year": "2014",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/content.jpeg"
+    },
+    {
+      "id": 8,
+      "author": "John Katzenbach",
+      "title": "The analyst",
+      "genre": "thriller",
+      "publisher": "Ballantine Books",
+      "year": "2003",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/el-psicoanalista-analyst-john-katzenbach-paperback-cover-art.jpg"
+    },
+    {
+      "id": 9,
+      "author": "Andy Weir",
+      "title": "The Martian",
+      "genre": "fiction",
+      "publisher": "Crown Publishing Group",
+      "year": "2011",
+      "image_url": "http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg"
+    }
+  ]
+}
