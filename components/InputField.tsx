@@ -9,6 +9,7 @@ interface InputFieldProps {
   onBlur?: any;
   value: string;
   error?: ReactNode;
+  editable?: boolean;
 }
 
 const InputField = (props: InputFieldProps) => {
@@ -21,6 +22,7 @@ const InputField = (props: InputFieldProps) => {
         value={props.value}
         style={styles.input}
         autoCapitalize="none"
+        editable={props.editable}
       />
       {props.error}
     </>

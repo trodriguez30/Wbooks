@@ -3,6 +3,7 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_ERROR,
   USER_LOGOUT,
+  CLEAR_LOGIN_ERROR,
 } from './actions';
 
 const initialState = {
@@ -43,6 +44,7 @@ export default function reducer(state = initialState, action) {
         authenticationError: true,
       };
     case USER_LOGOUT:
+    case CLEAR_LOGIN_ERROR:
       return {
         ...initialState,
       };

@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import {RootStateOrAny, useDispatch, useSelector} from 'react-redux';
-import {View, StatusBar, StyleSheet, FlatList} from 'react-native';
+import {View, StatusBar, StyleSheet} from 'react-native';
 import Header from '../components/Header';
-import ItemBook from '../components/ItemBook';
 import {Colors, Metrics} from '../definitions/theme';
 
 import {removeAllBooksToFavorites} from '../redux/books/actions';
-import EmptyState from '../components/EmptyState';
 import Modal from '../components/Modal';
+import BookList from '../components/BookList';
 
 const trashIcon = require('../assets/icons/trash.png');
 const boxColor = require('../assets/images/box-color.png');
@@ -20,10 +19,6 @@ export const Favorites = (props: any) => {
 
   const favoriteList = useSelector(
     (state: RootStateOrAny) => state.books.favoriteList,
-  );
-
-  const renderItem = ({item}: any) => (
-    <ItemBook item={item} navigation={props.navigation} />
   );
 
   const modalOptions = () => {
@@ -54,20 +49,7 @@ export const Favorites = (props: any) => {
         onPress={() => setModalVisible(true)}
         icon={trashIcon}
       />
-      <FlatList
-        contentContainerStyle={styles.flatlist}
-        disableVirtualization={false}
-        showsVerticalScrollIndicator={false}
-        data={favoriteList}
-        renderItem={renderItem}
-        keyExtractor={(item: any) => `book${item.id.toString()}`}
-        ListEmptyComponent={
-          <EmptyState
-            label={'No tienes libros agregados a favoritos'}
-            style={styles.emptyState}
-          />
-        }
-      />
+      <BookList data={favoriteList} navigation={props.navigation} />
       <Modal
         onClose={() => setModalVisible(false)}
         modalVisible={modalVisible}

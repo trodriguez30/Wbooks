@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {RootStateOrAny, useDispatch, useSelector} from 'react-redux';
-import {View, StatusBar, StyleSheet, FlatList} from 'react-native';
+import {View, StatusBar, StyleSheet} from 'react-native';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
-import ItemBook from '../components/ItemBook';
-import {Colors, Metrics} from '../definitions/theme';
-import LoaderHOC from '../helpers/LoaderHOC';
 import {filterBooksByKeyword} from '../helpers/utils';
 
 import {getBooks} from '../redux/books/actions';
-import EmptyState from '../components/EmptyState';
+import BookList from '../components/BookList';
+import {Colors, Metrics} from '../definitions/theme';
+import LoaderHOC from '../helpers/LoaderHOC';
 
 const iconSearch = require('../assets/icons/search.png');
 const closeSearch = require('../assets/icons/close.png');
@@ -21,6 +20,7 @@ export const Library = (props: any) => {
 
   const [keyword, setKeyword] = useState('');
   const [searching, setSearching] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [booksList, setBooksList] = useState([]);
 
   const fetchingBooks = useSelector(
@@ -50,11 +50,14 @@ export const Library = (props: any) => {
   useEffect(() => {
     if (fetchingBooks) {
       setLoading(true);
+      setRefreshing(true);
     }
     if (booksFetched) {
+      setRefreshing(false);
       setBooksList(booksByProps);
     }
     if (booksFetchFailed) {
+      setRefreshing(false);
       setLoading(false);
       setBooksList([]);
     }
@@ -81,10 +84,6 @@ export const Library = (props: any) => {
     }
   }, [keyword, searching, booksByProps]);
 
-  const renderItem = ({item}: any) => (
-    <ItemBook item={item} navigation={props.navigation} />
-  );
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -103,23 +102,12 @@ export const Library = (props: any) => {
         icon={searching ? closeSearch : iconSearch}
         iconSize={searching ? 17 : 25}
       />
-      <FlatList
-        contentContainerStyle={styles.flatlist}
-        disableVirtualization={false}
-        showsVerticalScrollIndicator={false}
+      <BookList
         data={booksList}
-        renderItem={renderItem}
-        keyExtractor={(item: any) => `book${item.id.toString()}`}
-        ListEmptyComponent={
-          <EmptyState
-            label={
-              typeof error === 'string'
-                ? error
-                : 'No se encontraron libros disponibles'
-            }
-            style={styles.emptyState}
-          />
-        }
+        error={error}
+        navigation={props.navigation}
+        onRefresh={() => dispatch(getBooks())}
+        refreshing={refreshing}
       />
     </View>
   );
@@ -141,5 +129,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: Metrics.Padding * 2,
   },
   flatlist: {flexGrow: 1},
+  spaceBottom: {width: '100%', height: 50},
 });
 export default LoaderHOC(Library, 'Cargando datos...');

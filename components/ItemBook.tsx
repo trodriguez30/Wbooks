@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {StyleSheet, Image, TouchableOpacity, View, Text} from 'react-native';
+import {
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  View,
+  Text,
+  Animated,
+} from 'react-native';
 import {Shadow, Colors, Metrics, FontStyle} from '../definitions/theme';
 import {BookProps} from '../definitions/interfaces';
 import {getThumbBook, isFavorite} from '../helpers/utils';
@@ -8,15 +15,17 @@ import {RootStateOrAny, useSelector} from 'react-redux';
 interface ItemBookProps {
   item: BookProps;
   navigation: any;
+  scale: any;
 }
 const ItemBook = (props: ItemBookProps) => {
   const thumb = getThumbBook(props.item.image_url);
+  let {scale} = props;
 
   const favoriteList = useSelector(
     (state: RootStateOrAny) => state.books.favoriteList,
   );
   return (
-    <View style={styles.itemContainer}>
+    <Animated.View style={{...styles.itemContainer, transform: [{scale}]}}>
       <TouchableOpacity
         style={styles.itemContent}
         onPress={() =>
@@ -40,7 +49,7 @@ const ItemBook = (props: ItemBookProps) => {
           <Text style={styles.year}>{props.item.year}</Text>
         </View>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -51,6 +60,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     padding: Metrics.Padding,
     borderRadius: Metrics.BorderRadius,
+    height: 100 + Metrics.Padding * 3,
   },
   itemContent: {
     height: 100 + Metrics.Padding * 2,

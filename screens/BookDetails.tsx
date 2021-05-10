@@ -139,6 +139,7 @@ const BookDetails = (props: any) => {
         <Divider color={Colors.Primary} style={styles.divider} />
         <Text style={styles.subtitle}>Comentarios</Text>
         <FlatList
+          contentContainerStyle={styles.spaceBottom}
           data={bookItem.hasOwnProperty('comments') ? bookItem.comments : []}
           renderItem={({item}) => <Comment {...item} />}
           keyExtractor={(item, index) => `comment${item.id}${index}`}
@@ -149,7 +150,6 @@ const BookDetails = (props: any) => {
             />
           }
         />
-        <View style={styles.spaceBottom} />
       </ScrollView>
     </View>
   );
@@ -230,6 +230,6 @@ const styles = StyleSheet.create({
     width: Metrics.ScreenWidth,
   },
   divider: {width: '95%'},
-  spaceBottom: {width: '100%', height: 50},
+  spaceBottom: {paddingBottom: 50},
 });
 export default BookDetails;

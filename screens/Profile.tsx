@@ -15,7 +15,7 @@ const logoutIcon = require('../assets/icons/logout.png');
 const warningIcon = require('../assets/icons/warning.png');
 const avatar = require('../assets/images/default_avatar.png');
 
-export const Profile = (props: any) => {
+export const Profile = () => {
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -24,7 +24,6 @@ export const Profile = (props: any) => {
   function handle_logout() {
     dispatch(removeAllBooksToFavorites());
     dispatch(logoutUser());
-    props.navigation.push('AuthStack');
   }
 
   return (
@@ -67,7 +66,6 @@ export const Profile = (props: any) => {
         detail={moment(info.created_at).format('L')}
       />
       <Divider color={Colors.Primary} style={styles.divider} />
-      <Text style={styles.subtitle}>Configuración</Text>
       <Modal
         onClose={() => setModalVisible(false)}
         modalVisible={modalVisible}

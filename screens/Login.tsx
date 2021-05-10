@@ -17,10 +17,11 @@ import ErrorText from '../components/ErrorText';
 import Checkbox from '../components/Checkbox';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {RootStateOrAny, useDispatch, useSelector} from 'react-redux';
-import {loginUser} from '../redux/auth/actions';
+import {loginUser, clearLoginError} from '../redux/auth/actions';
 import LoaderHOC from '../helpers/LoaderHOC';
 import ModalSelector from 'react-native-modal-selector';
 import {GENDER_ARRAY} from '../definitions/constants';
+import Modal from '../components/Modal';
 
 interface LoginValues {
   first_name: string;
@@ -50,6 +51,7 @@ function Login(props: any) {
   const dispatch = useDispatch();
 
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const authenticatingUser = useSelector(
     (state: RootStateOrAny) => state.auth.authenticatingUser,
@@ -76,6 +78,7 @@ function Login(props: any) {
     }
     if (authenticationError) {
       setLoading(false);
+      setModalVisible(true);
     }
   }, [
     authenticatingUser,
@@ -90,12 +93,6 @@ function Login(props: any) {
     setIsChecked(status);
   }
 
-  const ErrorComponent = (propsError: any) => (
-    <ErrorMessage name={propsError.name}>
-      {(msg) => <ErrorText error={msg} />}
-    </ErrorMessage>
-  );
-
   function login(values: LoginValues) {
     const payload = {
       ...values,
@@ -103,6 +100,17 @@ function Login(props: any) {
     };
     dispatch(loginUser(payload));
   }
+
+  function handleErrorResponse() {
+    setModalVisible(false);
+    dispatch(clearLoginError());
+  }
+
+  const ErrorComponent = (propsError: any) => (
+    <ErrorMessage name={propsError.name}>
+      {(msg) => <ErrorText error={msg} />}
+    </ErrorMessage>
+  );
 
   return (
     <View style={styles.flex}>
@@ -126,7 +134,6 @@ function Login(props: any) {
             handleBlur,
             handleSubmit,
             values,
-            errors,
             setFieldValue,
           }) => (
             <KeyboardAvoidingView
@@ -168,6 +175,7 @@ function Login(props: any) {
                   onBlur={handleBlur('birthday')}
                   value={values.gender}
                   error={<ErrorComponent name="gender" />}
+                  editable={false}
                 />
               </ModalSelector>
 
@@ -201,6 +209,13 @@ function Login(props: any) {
         </Formik>
       </ImageBackground>
       <StatusBar barStyle="dark-content" />
+      <Modal
+        onClose={handleErrorResponse}
+        modalVisible={modalVisible}
+        title={error}
+        closable
+        icon={require('../assets/icons/warning.png')}
+      />
     </View>
   );
 }
