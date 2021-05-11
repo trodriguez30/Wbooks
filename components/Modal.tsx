@@ -1,8 +1,13 @@
 import React from 'react';
-import {Image, Modal as ModalRN, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  Modal as ModalRN,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import {Colors, FontStyle, Metrics, Shadow} from '../definitions/theme';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
 interface ModalProps {
   onClose: () => void;
   modalVisible: boolean;
@@ -95,9 +100,11 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: Metrics.BorderRadius,
-    padding: 10,
+    paddingHorizontal: Metrics.Padding,
+    paddingVertical: Metrics.Padding / 2,
     elevation: 2,
     width: '100%',
+    alignSelf: 'center',
     backgroundColor: Colors.Warning,
     marginVertical: Metrics.Margin,
     ...Shadow,

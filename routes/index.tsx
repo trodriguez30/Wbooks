@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
@@ -29,6 +29,8 @@ const AuthStack = () => (
 );
 
 function MyTabBar({state, descriptors, navigation}) {
+  const insets = useSafeAreaInsets();
+
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
@@ -36,7 +38,7 @@ function MyTabBar({state, descriptors, navigation}) {
   }
 
   return (
-    <View style={styles.tabbarContainer}>
+    <View style={{...styles.tabbarContainer, paddingBottom: insets.bottom + 8}}>
       {state.routes.map((route: any, index: number) => {
         const {options} = descriptors[route.key];
         const label =
@@ -128,7 +130,6 @@ const AppStack = () => (
 const styles = StyleSheet.create({
   tabbarContainer: {
     flexDirection: 'row',
-    height: 100,
     backgroundColor: Colors.Primary,
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
