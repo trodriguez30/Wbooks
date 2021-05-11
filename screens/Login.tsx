@@ -117,14 +117,6 @@ function Login(props: any) {
       <ImageBackground
         source={require('../assets/Background.png')}
         style={styles.flex}>
-        <View style={[styles.logoContainer, styles.paddingHorizontal]}>
-          <Image
-            source={require('../assets/logo.png')}
-            resizeMode="contain"
-            style={styles.logoDimensions}
-          />
-        </View>
-        <Text style={[styles.title, styles.paddingHorizontal]}>Bienvenido</Text>
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => login(values)}
@@ -139,6 +131,16 @@ function Login(props: any) {
             <KeyboardAvoidingView
               behavior="height"
               style={styles.formContainer}>
+              <View style={styles.logoContainer}>
+                <Image
+                  source={require('../assets/logo.png')}
+                  resizeMode="contain"
+                  style={styles.logoDimensions}
+                />
+              </View>
+              <Text style={[styles.title, styles.paddingHorizontal]}>
+                Bienvenido
+              </Text>
               <InputField
                 label="Nombre"
                 onChangeText={handleChange('first_name')}
@@ -249,7 +251,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Metrics.Padding * 2,
     flexDirection: 'column',
     justifyContent: 'center',
-    height: Metrics.ScreenHeight * 0.7,
+    flex: 1,
     width: '100%',
   },
   versionContainer: {

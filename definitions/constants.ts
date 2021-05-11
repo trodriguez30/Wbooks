@@ -1,4 +1,5 @@
-export const HOST_URL: string = 'http://localhost:3000';
+export const HOST_URL: string =
+  'https://my-json-server.typicode.com/trodriguez30/wbooks';
 
 export const GENDER_ARRAY = [
   {
