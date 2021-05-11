@@ -41,7 +41,7 @@ const requiredText = 'Campo obligatorio!';
 const LoginSchema = yup.object().shape({
   first_name: yup.string().required(requiredText),
   last_name: yup.string().required(requiredText),
-  email: yup.string().email().required(requiredText),
+  email: yup.string().email('Escriba un correo válido').required(requiredText),
   gender: yup.string().required(requiredText),
 });
 
@@ -138,9 +138,7 @@ function Login(props: any) {
                   style={styles.logoDimensions}
                 />
               </View>
-              <Text style={[styles.title, styles.paddingHorizontal]}>
-                Bienvenido
-              </Text>
+              <Text style={styles.title}>Bienvenido(a)</Text>
               <InputField
                 label="Nombre"
                 onChangeText={handleChange('first_name')}

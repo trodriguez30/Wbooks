@@ -58,6 +58,12 @@
 		<string>Oswald-Bold.ttf</string>
 		<string>Oswald-Medium.ttf</string>
 		<string>Oswald-Regular.ttf</string>
+		<string>oswald-Bold.ttf</string>
+		<string>oswald-Medium.ttf</string>
+		<string>oswald-Regular.ttf</string>
+		<string>oswald-bold.ttf</string>
+		<string>oswald-medium.ttf</string>
+		<string>oswald-regular.ttf</string>
 	</array>
 </dict>
 </plist>
